@@ -38,13 +38,22 @@ export default function NumberPicker(): JSX.Element {
     ]);
   };
 
+  // const listOfEmojis: JSX.Element[] = storedFavouriteValueFromCurrentRender.map(emojiselected =>(<><li key={emojiselected}</li></>))
+
   return (
     <>
       <h1>Number picker</h1>
       <p>
         Your stored Emoji:
         {/* {emojiValueFromCurrentRender} */}
-        {favouriteEmojiFromCurrentRender}
+        {favouriteEmojiFromCurrentRender
+          .map((emoji) => (
+            <>
+              <li key={emoji}>{emoji}</li>
+            </>
+          ))
+          .reverse()
+          .slice(0, 5)}
       </p>
       <p>Emoji: {emojiValueFromCurrentRender}</p>
       <button onClick={handleAddClockEmoji}>⏰</button>
