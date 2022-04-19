@@ -1,32 +1,50 @@
 import { useState } from "react";
 
 export default function NumberPicker(): JSX.Element {
-  const [counterValueFromCurrentRender, queueRerenderWithNewCounterValue] =
-    useState(0);
-  const [favouriteValueFromCurrentRender, queueRerenderWithNewFavouriteValue] =
-    useState(0);
+  const [emojiValueFromCurrentRender, queueRerenderWithNewEmojiValue] =
+    useState("");
+  const [favouriteEmojiFromCurrentRender, queueRerenderWithNewFavouriteEmoji] =
+    useState("");
 
-  const handleAddOneToCounter = () => {
-    queueRerenderWithNewCounterValue(counterValueFromCurrentRender + 1);
+  const handleAddClockEmoji = () => {
+    queueRerenderWithNewEmojiValue("⏰");
+    queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
   };
 
-  const handleSubtractOneFromCounter = () => {
-    queueRerenderWithNewCounterValue(counterValueFromCurrentRender - 1);
+  const handleAddBedEmoji = () => {
+    queueRerenderWithNewEmojiValue("🛌");
+    queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
   };
 
-  const handleStoreCurrentCount = () => {
-    queueRerenderWithNewFavouriteValue(counterValueFromCurrentRender);
+  const handleAddPanEmoji = () => {
+    queueRerenderWithNewEmojiValue("🍳");
+    queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
+  };
+
+  const handleAddCutleryEmoji = () => {
+    queueRerenderWithNewEmojiValue("🍽️");
+    queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
+  };
+
+  const handleAddLickingEmoji = () => {
+    queueRerenderWithNewEmojiValue("😋");
+    queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
   };
 
   return (
     <>
       <h1>Number picker</h1>
-      <p>Your stored number: {favouriteValueFromCurrentRender}</p>
-      <p>Counter: {counterValueFromCurrentRender}</p>
-      <button onClick={handleSubtractOneFromCounter}>-1</button>
-      <button onClick={handleAddOneToCounter}>+1</button>
+      <p>
+        Your stored Emoji: {emojiValueFromCurrentRender}
+        {favouriteEmojiFromCurrentRender}
+      </p>
+      <p>Emoji: {emojiValueFromCurrentRender}</p>
+      <button onClick={handleAddClockEmoji}>⏰</button>
+      <button onClick={handleAddBedEmoji}>🛌</button>
+      <button onClick={handleAddPanEmoji}>🍳</button>
+      <button onClick={handleAddCutleryEmoji}>🍽️</button>
+      <button onClick={handleAddLickingEmoji}>😋</button>
       <hr />
-      <button onClick={handleStoreCurrentCount}>Store current count</button>
     </>
   );
 }
