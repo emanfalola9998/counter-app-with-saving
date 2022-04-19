@@ -4,38 +4,46 @@ export default function NumberPicker(): JSX.Element {
   const [emojiValueFromCurrentRender, queueRerenderWithNewEmojiValue] =
     useState("");
   const [favouriteEmojiFromCurrentRender, queueRerenderWithNewFavouriteEmoji] =
-    useState("");
+    useState<string[]>([]);
 
   const handleAddClockEmoji = () => {
     queueRerenderWithNewEmojiValue("⏰");
-    queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
+    // queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
   };
 
   const handleAddBedEmoji = () => {
     queueRerenderWithNewEmojiValue("🛌");
-    queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
+    // queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
   };
 
   const handleAddPanEmoji = () => {
     queueRerenderWithNewEmojiValue("🍳");
-    queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
+    // queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
   };
 
   const handleAddCutleryEmoji = () => {
     queueRerenderWithNewEmojiValue("🍽️");
-    queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
+    // queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
   };
 
   const handleAddLickingEmoji = () => {
     queueRerenderWithNewEmojiValue("😋");
-    queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
+    // queueRerenderWithNewFavouriteEmoji(emojiValueFromCurrentRender);
+  };
+
+  const handleStoredEmoji = () => {
+    queueRerenderWithNewFavouriteEmoji([
+      ...favouriteEmojiFromCurrentRender,
+      emojiValueFromCurrentRender,
+    ]);
   };
 
   return (
     <>
       <h1>Number picker</h1>
       <p>
-        Your stored Emoji: {emojiValueFromCurrentRender}
+        Your stored Emoji:
+        {/* {emojiValueFromCurrentRender} */}
         {favouriteEmojiFromCurrentRender}
       </p>
       <p>Emoji: {emojiValueFromCurrentRender}</p>
@@ -45,6 +53,7 @@ export default function NumberPicker(): JSX.Element {
       <button onClick={handleAddCutleryEmoji}>🍽️</button>
       <button onClick={handleAddLickingEmoji}>😋</button>
       <hr />
+      <button onClick={handleStoredEmoji}>add</button>
     </>
   );
 }
